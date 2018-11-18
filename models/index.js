@@ -1,13 +1,17 @@
 const fs = require('fs');
 const path = require('path');
+const env = require('dotenv');
 const Sequelize = require('sequelize');
-require('dotenv').config();
+const config = require('../config/config.json');
+const defaultConfig = config.development;
+const environment = process.env.ENVIRONMENT || 'development';
+const environmentConfig = config[environment];
 
 let db = {};
 
-const connection = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-	host: process.env.DB_HOST,
-	dialect: process.env.DB_TYPE,
+const connection = new Sequelize(environmentConfig.database, environmentConfig.username,environmentConfig.password, {
+	host: environmentConfig.host,
+	dialect: environmentConfig.dialect,
 });
 
 db.Books = connection['import'](path.join(__dirname,'Books.js'));

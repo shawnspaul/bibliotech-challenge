@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test" : "mocha 'test/index.test.js' mocha 'test/createuser.test.js' mocha 'test/signin.test.js' mocha 'test/books.test.js'"
+    "test": "mocha 'test/index.test.js' mocha 'test/createuser.test.js' mocha 'test/signin.test.js' mocha 'test/books.test.js'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "chai-http": "^4.2.0",
+    "config": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.1.0",
     "env": "0.0.2",
