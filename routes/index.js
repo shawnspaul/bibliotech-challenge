@@ -1,7 +1,14 @@
-/**
- * The default index route handler.
- * Responds to a request with body content to demonstrate the app is running as expected.
- */
-module.exports = (req, res, next) => {
-  res.end(`Express Code Challenge Started`);
-}
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const jsend = require('jsend');
+
+router.get('/', function(req,res) {
+	if (req.isAuthenticated()) {
+		return res.jsend.success({message:"You are signed in"});
+	} else {
+		return res.jsend.success({message:"Go sign in at /users/signin"});
+	}
+});
+
+module.exports = router;
